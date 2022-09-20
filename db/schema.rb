@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_17_100101) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_19_132403) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_17_100101) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "motorcycle_reservations", force: :cascade do |t|
+    t.bigint "motorcycle_id_id", null: false
+    t.bigint "reservation_id_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["motorcycle_id_id"], name: "index_motorcycle_reservations_on_motorcycle_id_id"
+    t.index ["reservation_id_id"], name: "index_motorcycle_reservations_on_reservation_id_id"
   end
 
   create_table "motorcycles", force: :cascade do |t|
@@ -50,6 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_17_100101) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "motorcycle_reservations", "motorcycles", column: "motorcycle_id_id"
+  add_foreign_key "motorcycle_reservations", "reservations", column: "reservation_id_id"
   add_foreign_key "motorcycles", "users"
   add_foreign_key "reservations", "users"
 end
