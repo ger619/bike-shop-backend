@@ -18,10 +18,10 @@ class Api::V1::MotorcycleController < ApplicationController
   def create
     @motorcycle = Motorcycle.new(motorcycle_params)
     if @motorcycle.save
-      render json: @motorcycle
+      render json: {message: "Added succesfuly" }
       # http://127.0.0.1:3000/api/v1/motorcycles
     else
-      render json: { error: 'Error creating motorcycle' }
+      render json: {message: "Internal Server error. Please check your params"}
     end
   end
 
@@ -33,6 +33,6 @@ class Api::V1::MotorcycleController < ApplicationController
   private
 
   def motorcycle_params
-    params.require(:motorcycle).permit(:brand, :model, :year, :image, :description, :booking_fee, :reserved)
+    params.require(:motorcycle).permit(:user_id, :brand, :model, :year, :image, :description, :booking_fee, :reserved)
   end
 end

@@ -14,12 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_132403) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "motorcycle_reservations", force: :cascade do |t|
     t.bigint "motorcycle_id_id", null: false
     t.bigint "reservation_id_id", null: false
@@ -31,12 +25,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_132403) do
 
   create_table "motorcycles", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "productID"
     t.string "brand"
     t.string "model"
     t.string "year"
     t.string "image"
+    t.string "description"
     t.integer "booking_fee"
+    t.boolean "reserved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_motorcycles_on_user_id"
