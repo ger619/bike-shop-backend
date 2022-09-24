@@ -10,24 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_17_100101) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_23_135637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
+  create_table "motorcycle_reservations", force: :cascade do |t|
+    t.bigint "motorcycle_id", null: false
+    t.bigint "reservation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["motorcycle_id"], name: "index_motorcycle_reservations_on_motorcycle_id"
+    t.index ["reservation_id"], name: "index_motorcycle_reservations_on_reservation_id"
   end
 
   create_table "motorcycles", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "productID"
     t.string "brand"
     t.string "model"
     t.string "year"
     t.string "image"
+    t.string "description"
     t.integer "booking_fee"
+    t.boolean "reserved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_motorcycles_on_user_id"
@@ -41,15 +45,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_17_100101) do
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "motorcycle_id", null: false
+    t.index ["motorcycle_id"], name: "index_reservations_on_motorcycle_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "motorcycle_reservations", "motorcycles"
+  add_foreign_key "motorcycle_reservations", "reservations"
   add_foreign_key "motorcycles", "users"
+  add_foreign_key "reservations", "motorcycles"
   add_foreign_key "reservations", "users"
 end
