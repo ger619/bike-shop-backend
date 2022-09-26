@@ -88,8 +88,6 @@ gem 'rails-controller-testing'
 gem 'rspec-core'
 
 # API
-gem 'jwt'
-
 gem 'rswag'
 
 # FFi

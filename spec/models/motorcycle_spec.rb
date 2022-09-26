@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe Motorcycle, type: :model do
   before(:each) do
     @user = User.create!(username: 'Hammed', password_digest: 'abc@123')
-    @motorcycle = Motorcycle.new(user_id: @user.id, brand: "Honda", model: "CBR1000RR", year: "2021", image: "https://www.honda.com.au/content/dam/honda/australia/motorcycles/cbr1000rr/2021/overview/overview-1.jpg", description: "Latest Model", booking_fee: 100)
+    @motorcycle = Motorcycle.new(user_id: @user.id, brand: 'Honda', model: 'CBR1000RR', year: '2021', 
+      image: 'https://www.honda.com.au/content/dam/honda/australia/motorcycles/cbr1000rr/2021/overview/overview-1.jpg', 
+      description: 'Latest Model', booking_fee: 100
+    )
   end
 
   describe 'validations' do
