@@ -12,8 +12,9 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       post '/login', to: 'users#login'
       post '/create', to: 'users#create'
-      resources :motorcycle
-      resources :reservation
+      resources :motorcycle do
+       resources :reservation
+      end
     end
   end
   root "api/v1/motorcycle#index"

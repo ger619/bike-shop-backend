@@ -94,3 +94,5 @@ gem 'rswag'
 
 # FFi
 gem 'ffi'
+
+gem 'jsonapi-serializer'

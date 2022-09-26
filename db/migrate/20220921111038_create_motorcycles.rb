@@ -5,7 +5,6 @@ class CreateMotorcycles < ActiveRecord::Migration[7.0]
       t.string :brand
       t.string :model
       t.string :year
-      t.string :image
       t.string :description
       t.integer :booking_fee
       t.boolean :reserved
