@@ -1,10 +1,9 @@
 class Api::V1::MotorcycleController < ApplicationController
   before_action :authorize
-  # before_action :set_motorcycle, only: %i[show update destroy]
 
   def index
-    @motorcycle = @user.motorcycles.all
-    render json: @motorcycle
+    @motorcycle = Motorcycle.all
+    render json: MotorcycleSerializer.new(@motorcycle).serializable_hash[:data].map { |hash| hash[:attributes] }
     # http://127.0.0.1:3000/api/v1/motorcycles
   end
 
