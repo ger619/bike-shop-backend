@@ -17,5 +17,5 @@ Rails.application.routes.draw do
       end
     end
   end
-  root "api/v1/motorcycle#index"
+  root "api/v1/users#create"
 end
