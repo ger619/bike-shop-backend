@@ -82,5 +82,4 @@ test:
 production:
   <<: *default
   database: bike_shop_backend_production
-  username: postgres
   password: <%= ENV["BIKE_SHOP_BACKEND_DATABASE_PASSWORD"] %>
