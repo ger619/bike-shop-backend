@@ -77,4 +77,4 @@ gem 'cancancan'
 
 gem 'jsonapi-serializer'
 
-gem "active_model_serializers"
+gem 'active_model_serializers'
