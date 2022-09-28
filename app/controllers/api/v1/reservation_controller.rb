@@ -1,17 +1,17 @@
 class Api::V1::ReservationController < ApplicationController
   # before_action :authorize
   def index
-    @my_reserves = Motorcycle.left_outer_joins(:reservations) 
+    @my_reserves = Motorcycle.left_outer_joins(:reservations)
       .select('reservations.*, motorcycles.*, reservations.id as reservation_id, reservations.user_id as r_user_id')
-       
+
     render json: ReservesSerializer.new(@my_reserves).serializable_hash[:data].map { |hash| hash[:attributes] }
   end
 
   def show
     @my_reserves = Motorcycle.left_outer_joins(:reservations)
-    .select('reservations.*, motorcycles.*, reservations.id as reservation_id, reservations.user_id as r_user_id')
-    .where("reservations.user_id = #{params[:id]}")
-     
+      .select('reservations.*, motorcycles.*, reservations.id as reservation_id, reservations.user_id as r_user_id')
+      .where("reservations.user_id = #{params[:id]}")
+
     render json: ReservesSerializer.new(@my_reserves).serializable_hash[:data].map { |hash| hash[:attributes] }
   end
 
