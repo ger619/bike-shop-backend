@@ -29,3 +29,5 @@
 /config/master.key
 
 /app/config/manifest.js
+
+/config/database.yml
