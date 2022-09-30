@@ -81,8 +81,8 @@ gem 'rack-cors'
 
 gem 'fast_jsonapi'
 
-gem 'cancancan'
-
 gem 'jsonapi-serializer'
+
+gem 'active_model_serializers'
 
 gem 'ffi'

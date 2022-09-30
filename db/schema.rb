@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_175603) do
     t.string "brand"
     t.string "model"
     t.string "year"
+    t.string "image"
     t.string "description"
     t.integer "booking_fee"
     t.boolean "reserved"

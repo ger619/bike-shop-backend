@@ -1,2 +1,0 @@
-class MotorcycleReservation < ApplicationRecord
-end
