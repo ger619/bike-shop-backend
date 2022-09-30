@@ -12,6 +12,8 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+  config.action_mailer.default_url_options = { :host => "https://rails-cah.herokuapp.com/" }
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
 
@@ -82,5 +84,5 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
+  config.active_record.dump_schema_after_migration = true
 end

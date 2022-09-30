@@ -1,0 +1,2 @@
+class ResevationController < ApplicationController
+end
